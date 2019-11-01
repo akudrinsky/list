@@ -11,7 +11,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b623dd9d-79f7-456d-a03c-a46e34fcf0f5" name="Default Changelist" comment="" />
+    <list default="true" id="b623dd9d-79f7-456d-a03c-a46e34fcf0f5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/list.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/list.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/list.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/list.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/list" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/list_dump.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/list_dump.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/list.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,13 +31,20 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1SumueVIiQzsOCwsrhEwimU9q64" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cmake-build-debug" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -61,11 +77,31 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572422078820</updated>
-      <workItem from="1572422079985" duration="3932000" />
+      <workItem from="1572422079985" duration="4651000" />
+      <workItem from="1572532347434" duration="6598000" />
+      <workItem from="1572550614556" duration="182000" />
+      <workItem from="1572583249782" duration="249000" />
+      <workItem from="1572593775685" duration="2560000" />
+      <workItem from="1572597044494" duration="61000" />
+      <workItem from="1572597122090" duration="2089000" />
+      <workItem from="1572601456745" duration="2205000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

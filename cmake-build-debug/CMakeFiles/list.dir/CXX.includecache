@@ -11,6 +11,8 @@ stdio.h
 -
 stdlib.h
 -
+string.h
+-
 
 /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/main.cpp
 stdio.h
