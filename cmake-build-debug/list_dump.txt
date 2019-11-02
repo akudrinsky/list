@@ -1,8 +1,8 @@
-assert from void List_Construct(List_t *, char *) in line 107 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e873ba30] (ok)
+assert from void List_Construct(List_t *, char *) in line 109 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ecd62a30] (ok)
 {
 	size = 0
-	data[10] = ebd025e0
+	data[10] = cc02720
 	{
 	  [ 0] =   0;	 next =  0;	 prev =  0
 	  [ 1] =   0;	 next =  2;	 prev = -1
@@ -22,157 +22,13 @@ List_t <lst> [e873ba30] (ok)
 }
 
 
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e873ba30] (ok)
+assert from void insert_after(List_t *, int, Elem_t) in line 301 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ecd62a30] (ok)
 {
-	size = 0
-	data[10] = ebd025e0
+	size = 1
+	data[10] = cc02720
 	{
-	  [ 0] =   0;	 next =  1;	 prev =  0
-	  [ 1] =  11;	 next =  0;	 prev =  0
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev =  1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 1
-	free = 2
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e873ba30] (ok)
-{
-	size = 0
-	data[10] = ebd025e0
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  0
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  1
-	  [ 3] =   0;	 next =  4;	 prev =  1
-	  [ 4] =   0;	 next =  5;	 prev =  2
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 3
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e873ba30] (ok)
-{
-	size = 0
-	data[10] = ebd025e0
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  0
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  0;	 prev =  2
-	  [ 4] =   0;	 next =  5;	 prev =  2
-	  [ 5] =   0;	 next =  6;	 prev =  3
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 3
-	free = 4
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e873ba30] (ok)
-{
-	size = 0
-	data[10] = ebd025e0
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  0
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  4;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  3
-	  [ 5] =   0;	 next =  6;	 prev =  3
-	  [ 6] =   0;	 next =  7;	 prev =  4
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 5
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e873ba30] (ok)
-{
-	size = 0
-	data[10] = ebd025e0
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  0
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  5;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  3
-	  [ 5] =  22;	 next =  4;	 prev =  3
-	  [ 6] =   0;	 next =  7;	 prev =  4
-	  [ 7] =   0;	 next =  8;	 prev =  5
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 6
-	is_sorted = 0
-}
-
-
-assert from void List_Construct(List_t *, char *) in line 107 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e4a5ba30] (ok)
-{
-	size = 0
-	data[10] = 70402720
-	{
-	  [ 0] =   0;	 next =  0;	 prev =  0
-	  [ 1] =   0;	 next =  2;	 prev = -1
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 0
-	tail = 0
-	free = 1
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e4a5ba30] (ok)
-{
-	size = 0
-	data[10] = 70402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  1
+	* [ 0] =   0;	 next =  1;	 prev =  1
 	  [ 1] =  11;	 next =  0;	 prev =  0
 	  [ 2] =   0;	 next =  3;	 prev = -1
 	  [ 3] =   0;	 next =  4;	 prev = -1
@@ -190,14 +46,14 @@ List_t <lst> [e4a5ba30] (ok)
 }
 
 
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e4a5ba30] (ok)
+assert from void insert_after(List_t *, int, Elem_t) in line 301 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ecd62a30] (ok)
 {
-	size = 0
-	data[10] = 70402720
+	size = 2
+	data[10] = cc02720
 	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  2;	 prev =  0
+	* [ 0] =   0;	 next =  1;	 prev =  2
+	* [ 1] =  11;	 next =  2;	 prev =  0
 	  [ 2] =  22;	 next =  0;	 prev =  1
 	  [ 3] =   0;	 next =  4;	 prev = -1
 	  [ 4] =   0;	 next =  5;	 prev = -1
@@ -214,831 +70,15 @@ List_t <lst> [e4a5ba30] (ok)
 }
 
 
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e4a5ba30] (ok)
+assert from void insert_after(List_t *, int, Elem_t) in line 301 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ecd62a30] (ok)
 {
-	size = 0
-	data[10] = 70402720
+	size = 3
+	data[10] = cc02720
 	{
-	  [ 0] =   0;	 next =  1;	 prev =  3
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  0;	 prev =  2
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 3
-	free = 4
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e4a5ba30] (ok)
-{
-	size = 0
-	data[10] = 70402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  4;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  3
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 5
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e4a5ba30] (ok)
-{
-	size = 0
-	data[10] = 70402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  5;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  5
-	  [ 5] =  22;	 next =  4;	 prev =  3
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 6
-	is_sorted = 0
-}
-
-
-assert from void List_Construct(List_t *, char *) in line 107 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed518a30] (ok)
-{
-	size = 0
-	data[10] = eb402720
-	{
-	  [ 0] =   0;	 next =  0;	 prev =  0
-	  [ 1] =   0;	 next =  2;	 prev = -1
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 0
-	tail = 0
-	free = 1
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed518a30] (ok)
-{
-	size = 0
-	data[10] = eb402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  1
-	  [ 1] =  11;	 next =  0;	 prev =  0
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 1
-	free = 2
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed518a30] (ok)
-{
-	size = 0
-	data[10] = eb402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 3
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed518a30] (ok)
-{
-	size = 0
-	data[10] = eb402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  3
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  0;	 prev =  2
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 3
-	free = 4
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed518a30] (ok)
-{
-	size = 0
-	data[10] = eb402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  4;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  3
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 5
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed518a30] (ok)
-{
-	size = 0
-	data[10] = eb402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  5;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  5
-	  [ 5] =  22;	 next =  4;	 prev =  3
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 6
-	is_sorted = 0
-}
-
-
-assert from void List_Construct(List_t *, char *) in line 107 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed19da30] (ok)
-{
-	size = 0
-	data[10] = 5402720
-	{
-	  [ 0] =   0;	 next =  0;	 prev =  0
-	  [ 1] =   0;	 next =  2;	 prev = -1
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 0
-	tail = 0
-	free = 1
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed19da30] (ok)
-{
-	size = 0
-	data[10] = 5402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  1
-	  [ 1] =  11;	 next =  0;	 prev =  0
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 1
-	free = 2
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed19da30] (ok)
-{
-	size = 0
-	data[10] = 5402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 3
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed19da30] (ok)
-{
-	size = 0
-	data[10] = 5402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  3
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  0;	 prev =  2
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 3
-	free = 4
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed19da30] (ok)
-{
-	size = 0
-	data[10] = 5402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  4;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  3
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 5
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ed19da30] (ok)
-{
-	size = 0
-	data[10] = 5402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  5;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  5
-	  [ 5] =  22;	 next =  4;	 prev =  3
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 6
-	is_sorted = 0
-}
-
-
-assert from void List_Construct(List_t *, char *) in line 107 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e0888a30] (ok)
-{
-	size = 0
-	data[10] = e8402720
-	{
-	  [ 0] =   0;	 next =  0;	 prev =  0
-	  [ 1] =   0;	 next =  2;	 prev = -1
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 0
-	tail = 0
-	free = 1
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e0888a30] (ok)
-{
-	size = 0
-	data[10] = e8402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  1
-	  [ 1] =  11;	 next =  0;	 prev =  0
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 1
-	free = 2
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e0888a30] (ok)
-{
-	size = 0
-	data[10] = e8402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 3
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e0888a30] (ok)
-{
-	size = 0
-	data[10] = e8402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  3
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  0;	 prev =  2
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 3
-	free = 4
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e0888a30] (ok)
-{
-	size = 0
-	data[10] = e8402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  4;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  3
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 5
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e0888a30] (ok)
-{
-	size = 0
-	data[10] = e8402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  5;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  5
-	  [ 5] =  22;	 next =  4;	 prev =  3
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 6
-	is_sorted = 0
-}
-
-
-assert from void List_Construct(List_t *, char *) in line 107 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ec2f7a30] (ok)
-{
-	size = 0
-	data[10] = a6402720
-	{
-	  [ 0] =   0;	 next =  0;	 prev =  0
-	  [ 1] =   0;	 next =  2;	 prev = -1
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 0
-	tail = 0
-	free = 1
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ec2f7a30] (ok)
-{
-	size = 0
-	data[10] = a6402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  1
-	  [ 1] =  11;	 next =  0;	 prev =  0
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 1
-	free = 2
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ec2f7a30] (ok)
-{
-	size = 0
-	data[10] = a6402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 3
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ec2f7a30] (ok)
-{
-	size = 0
-	data[10] = a6402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  3
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  0;	 prev =  2
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 3
-	free = 4
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ec2f7a30] (ok)
-{
-	size = 0
-	data[10] = a6402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  4;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  3
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 5
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [ec2f7a30] (ok)
-{
-	size = 0
-	data[10] = a6402720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  4
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  3;	 prev =  1
-	  [ 3] =  33;	 next =  5;	 prev =  2
-	  [ 4] =  11;	 next =  0;	 prev =  5
-	  [ 5] =  22;	 next =  4;	 prev =  3
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 4
-	free = 6
-	is_sorted = 0
-}
-
-
-assert from void List_Construct(List_t *, char *) in line 107 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e72eca30] (ok)
-{
-	size = 0
-	data[10] = 5bc02720
-	{
-	  [ 0] =   0;	 next =  0;	 prev =  0
-	  [ 1] =   0;	 next =  2;	 prev = -1
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 0
-	tail = 0
-	free = 1
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e72eca30] (ok)
-{
-	size = 0
-	data[10] = 5bc02720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  1
-	  [ 1] =  11;	 next =  0;	 prev =  0
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 1
-	free = 2
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e72eca30] (ok)
-{
-	size = 0
-	data[10] = 5bc02720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 3
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [e72eca30] (NOT OK)
-{
-	size = 0
-	data[10] = 5bc02720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 3
-	is_sorted = 1
-}
-
-
-assert from void List_Construct(List_t *, char *) in line 107 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [eb32ba30] (ok)
-{
-	size = 0
-	data[10] = 63c02720
-	{
-	  [ 0] =   0;	 next =  0;	 prev =  0
-	  [ 1] =   0;	 next =  2;	 prev = -1
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 0
-	tail = 0
-	free = 1
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [eb32ba30] (ok)
-{
-	size = 0
-	data[10] = 63c02720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  1
-	  [ 1] =  11;	 next =  0;	 prev =  0
-	  [ 2] =   0;	 next =  3;	 prev = -1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 1
-	free = 2
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [eb32ba30] (ok)
-{
-	size = 0
-	data[10] = 63c02720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  2;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  1
-	  [ 3] =   0;	 next =  4;	 prev = -1
-	  [ 4] =   0;	 next =  5;	 prev = -1
-	  [ 5] =   0;	 next =  6;	 prev = -1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 3
-	is_sorted = 1
-}
-
-
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [eb32ba30] (ok)
-{
-	size = 0
-	data[10] = 63c02720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  3;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  3
+	* [ 0] =   0;	 next =  1;	 prev =  2
+	* [ 1] =  11;	 next =  3;	 prev =  0
+	* [ 2] =  22;	 next =  0;	 prev =  3
 	  [ 3] =  33;	 next =  2;	 prev =  1
 	  [ 4] =   0;	 next =  5;	 prev = -1
 	  [ 5] =   0;	 next =  6;	 prev = -1
@@ -1054,17 +94,137 @@ List_t <lst> [eb32ba30] (ok)
 }
 
 
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [eb32ba30] (ok)
+assert from void insert_after(List_t *, int, Elem_t) in line 301 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ecd62a30] (ok)
+{
+	size = 4
+	data[10] = cc02720
+	{
+	* [ 0] =   0;	 next =  1;	 prev =  4
+	* [ 1] =  11;	 next =  3;	 prev =  0
+	* [ 2] =  22;	 next =  4;	 prev =  3
+	* [ 3] =  33;	 next =  2;	 prev =  1
+	  [ 4] =  44;	 next =  0;	 prev =  2
+	  [ 5] =   0;	 next =  6;	 prev = -1
+	  [ 6] =   0;	 next =  7;	 prev = -1
+	  [ 7] =   0;	 next =  8;	 prev = -1
+	  [ 8] =   0;	 next =  9;	 prev = -1
+	  [ 9] =   0;	 next =  0;	 prev = -1
+	}
+	head = 1
+	tail = 4
+	free = 5
+	is_sorted = 0
+}
+
+
+assert from void delete_before(List_t *, int) in line 376 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ecd62a30] (ok)
+{
+	size = 3
+	data[10] = cc02720
+	{
+	* [ 0] =   0;	 next =  1;	 prev =  4
+	* [ 1] =  11;	 next =  2;	 prev =  0
+	* [ 2] =  22;	 next =  4;	 prev =  1
+	  [ 3] =   0;	 next =  5;	 prev = -1
+	  [ 4] =  44;	 next =  0;	 prev =  2
+	  [ 5] =   0;	 next =  6;	 prev = -1
+	  [ 6] =   0;	 next =  7;	 prev = -1
+	  [ 7] =   0;	 next =  8;	 prev = -1
+	  [ 8] =   0;	 next =  9;	 prev = -1
+	  [ 9] =   0;	 next =  0;	 prev = -1
+	}
+	head = 1
+	tail = 4
+	free = 3
+	is_sorted = 0
+}
+
+
+assert from void phys_match_log(List_t *) in line 409 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ecd62a30] (ok)
+{
+	size = 3
+	data[10] = ce00000
+	{
+	* [ 0] =   0;	 next =  1;	 prev =  4
+	* [ 1] =  11;	 next =  2;	 prev =  0
+	* [ 2] =  22;	 next =  3;	 prev =  1
+	  [ 3] =  44;	 next =  4;	 prev =  2
+	  [ 4] =   0;	 next =  5;	 prev = -1
+	  [ 5] =   0;	 next =  6;	 prev = -1
+	  [ 6] =   0;	 next =  7;	 prev = -1
+	  [ 7] =   0;	 next =  8;	 prev = -1
+	  [ 8] =   0;	 next =  9;	 prev = -1
+	  [ 9] =   0;	 next =  0;	 prev = -1
+	}
+	head = 1
+	tail = 3
+	free = 4
+	is_sorted = 1
+}
+
+
+assert from void List_Construct(List_t *, char *) in line 109 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ee619a30] (ok)
 {
 	size = 0
-	data[10] = 63c02720
+	data[10] = 32402720
 	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  4;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  3
-	  [ 3] =  33;	 next =  2;	 prev =  4
-	  [ 4] =  44;	 next =  3;	 prev =  1
+	  [ 0] =   0;	 next =  0;	 prev =  0
+	  [ 1] =   0;	 next =  2;	 prev = -1
+	  [ 2] =   0;	 next =  3;	 prev = -1
+	  [ 3] =   0;	 next =  4;	 prev = -1
+	  [ 4] =   0;	 next =  5;	 prev = -1
+	  [ 5] =   0;	 next =  6;	 prev = -1
+	  [ 6] =   0;	 next =  7;	 prev = -1
+	  [ 7] =   0;	 next =  8;	 prev = -1
+	  [ 8] =   0;	 next =  9;	 prev = -1
+	  [ 9] =   0;	 next =  0;	 prev = -1
+	}
+	head = 0
+	tail = 0
+	free = 1
+	is_sorted = 1
+}
+
+
+assert from void insert_after(List_t *, int, Elem_t) in line 301 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ee619a30] (ok)
+{
+	size = 1
+	data[10] = 32402720
+	{
+	* [ 0] =   0;	 next =  1;	 prev =  1
+	  [ 1] =  11;	 next =  0;	 prev =  0
+	  [ 2] =   0;	 next =  3;	 prev = -1
+	  [ 3] =   0;	 next =  4;	 prev = -1
+	  [ 4] =   0;	 next =  5;	 prev = -1
+	  [ 5] =   0;	 next =  6;	 prev = -1
+	  [ 6] =   0;	 next =  7;	 prev = -1
+	  [ 7] =   0;	 next =  8;	 prev = -1
+	  [ 8] =   0;	 next =  9;	 prev = -1
+	  [ 9] =   0;	 next =  0;	 prev = -1
+	}
+	head = 1
+	tail = 1
+	free = 2
+	is_sorted = 1
+}
+
+
+assert from void insert_after(List_t *, int, Elem_t) in line 301 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ee619a30] (ok)
+{
+	size = 2
+	data[10] = 32402720
+	{
+	* [ 0] =   0;	 next =  1;	 prev =  2
+	* [ 1] =  11;	 next =  2;	 prev =  0
+	  [ 2] =  22;	 next =  0;	 prev =  1
+	  [ 3] =   0;	 next =  4;	 prev = -1
+	  [ 4] =   0;	 next =  5;	 prev = -1
 	  [ 5] =   0;	 next =  6;	 prev = -1
 	  [ 6] =   0;	 next =  7;	 prev = -1
 	  [ 7] =   0;	 next =  8;	 prev = -1
@@ -1073,46 +233,22 @@ List_t <lst> [eb32ba30] (ok)
 	}
 	head = 1
 	tail = 2
-	free = 5
-	is_sorted = 0
+	free = 3
+	is_sorted = 1
 }
 
 
-assert from void insert_after(List_t *, int, Elem_t) in line 298 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [eb32ba30] (ok)
+assert from void insert_after(List_t *, int, Elem_t) in line 301 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ee619a30] (ok)
 {
-	size = 0
-	data[10] = 63c02720
+	size = 3
+	data[10] = 32402720
 	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  5;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  3
-	  [ 3] =  33;	 next =  2;	 prev =  4
-	  [ 4] =  44;	 next =  3;	 prev =  5
-	  [ 5] =  55;	 next =  4;	 prev =  1
-	  [ 6] =   0;	 next =  7;	 prev = -1
-	  [ 7] =   0;	 next =  8;	 prev = -1
-	  [ 8] =   0;	 next =  9;	 prev = -1
-	  [ 9] =   0;	 next =  0;	 prev = -1
-	}
-	head = 1
-	tail = 2
-	free = 6
-	is_sorted = 0
-}
-
-
-assert from void delete_after(List_t *, int) in line 317 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
-List_t <lst> [eb32ba30] (ok)
-{
-	size = 0
-	data[10] = 63c02720
-	{
-	  [ 0] =   0;	 next =  1;	 prev =  2
-	  [ 1] =  11;	 next =  4;	 prev =  0
-	  [ 2] =  22;	 next =  0;	 prev =  3
-	  [ 3] =  33;	 next =  2;	 prev =  4
-	  [ 4] =  44;	 next =  3;	 prev =  1
+	* [ 0] =   0;	 next =  1;	 prev =  2
+	* [ 1] =  11;	 next =  3;	 prev =  0
+	* [ 2] =  22;	 next =  0;	 prev =  3
+	  [ 3] =  33;	 next =  2;	 prev =  1
+	  [ 4] =   0;	 next =  5;	 prev = -1
 	  [ 5] =   0;	 next =  6;	 prev = -1
 	  [ 6] =   0;	 next =  7;	 prev = -1
 	  [ 7] =   0;	 next =  8;	 prev = -1
@@ -1121,8 +257,80 @@ List_t <lst> [eb32ba30] (ok)
 	}
 	head = 1
 	tail = 2
+	free = 4
+	is_sorted = 0
+}
+
+
+assert from void insert_after(List_t *, int, Elem_t) in line 301 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ee619a30] (ok)
+{
+	size = 4
+	data[10] = 32402720
+	{
+	* [ 0] =   0;	 next =  1;	 prev =  4
+	* [ 1] =  11;	 next =  3;	 prev =  0
+	* [ 2] =  22;	 next =  4;	 prev =  3
+	* [ 3] =  33;	 next =  2;	 prev =  1
+	  [ 4] =  44;	 next =  0;	 prev =  2
+	  [ 5] =   0;	 next =  6;	 prev = -1
+	  [ 6] =   0;	 next =  7;	 prev = -1
+	  [ 7] =   0;	 next =  8;	 prev = -1
+	  [ 8] =   0;	 next =  9;	 prev = -1
+	  [ 9] =   0;	 next =  0;	 prev = -1
+	}
+	head = 1
+	tail = 4
 	free = 5
 	is_sorted = 0
+}
+
+
+assert from void delete_before(List_t *, int) in line 376 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ee619a30] (ok)
+{
+	size = 3
+	data[10] = 32402720
+	{
+	* [ 0] =   0;	 next =  1;	 prev =  4
+	* [ 1] =  11;	 next =  2;	 prev =  0
+	* [ 2] =  22;	 next =  4;	 prev =  1
+	  [ 3] =   0;	 next =  5;	 prev = -1
+	  [ 4] =  44;	 next =  0;	 prev =  2
+	  [ 5] =   0;	 next =  6;	 prev = -1
+	  [ 6] =   0;	 next =  7;	 prev = -1
+	  [ 7] =   0;	 next =  8;	 prev = -1
+	  [ 8] =   0;	 next =  9;	 prev = -1
+	  [ 9] =   0;	 next =  0;	 prev = -1
+	}
+	head = 1
+	tail = 4
+	free = 3
+	is_sorted = 0
+}
+
+
+assert from void phys_match_log(List_t *) in line 409 (file: /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp)
+List_t <lst> [ee619a30] (ok)
+{
+	size = 3
+	data[10] = 32600080
+	{
+	* [ 0] =   0;	 next =  1;	 prev =  4
+	* [ 1] =  11;	 next =  2;	 prev =  0
+	* [ 2] =  22;	 next =  3;	 prev =  1
+	  [ 3] =  44;	 next =  0;	 prev =  2
+	  [ 4] =   0;	 next =  5;	 prev = -1
+	  [ 5] =   0;	 next =  6;	 prev = -1
+	  [ 6] =   0;	 next =  7;	 prev = -1
+	  [ 7] =   0;	 next =  8;	 prev = -1
+	  [ 8] =   0;	 next =  9;	 prev = -1
+	  [ 9] =   0;	 next =  0;	 prev = -1
+	}
+	head = 1
+	tail = 3
+	free = 4
+	is_sorted = 1
 }
 
 

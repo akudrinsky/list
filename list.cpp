@@ -72,7 +72,9 @@ void list_graph (List_t* lst, const char* pict_name = "list.png", const char* pi
 bool List_okey (List_t* lst);
 
 void insert_after (List_t* lst, int pos, Elem_t elem);
+void insert_before (List_t* lst, int pos, Elem_t elem);
 void delete_after (List_t* lst, int pos);
+void delete_before (List_t* lst, int pos);
 
 
 
@@ -294,6 +296,44 @@ void insert_after (List_t* lst, int pos, Elem_t elem) {
         }
 
         lst->free = tmp;
+        ++lst->size;
+    }
+    List_OK (*lst)
+}
+
+void insert_before (List_t* lst, int pos, Elem_t elem) {
+    if (lst->prev[pos] == -1) {
+        printf ("Trying to insert element before non-existing element (it was not in list)\n");
+        lst->is_valid = calling_nowhere;
+    }
+    else {
+        int tmp = lst->next[lst->free];                             //next free element
+        //printf ("pos = %d = %d = tail\n", pos, lst->tail);
+
+        //if inserting before first (logically) element
+        if (pos == lst->head) {
+            lst->head = lst->free;
+        }
+        else {
+            lst->is_sorted = false;
+        }
+
+        lst->next[lst->prev[pos]] = lst->free;
+        lst->data[lst->free] = elem;
+        lst->next[lst->free] = pos;
+        lst->prev[lst->free] = lst->prev[pos];
+
+        lst->prev[pos] = lst->free;
+
+        //if list was empty
+        if (lst->head == 0) {
+            lst->head = lst->free;
+        }
+
+        lst->free = tmp;
+        ++lst->size;
+
+        lst->is_sorted = false;
     }
     List_OK (*lst)
 }
@@ -313,7 +353,63 @@ void delete_after (List_t* lst, int pos) {
 
         lst->next[tmp] = lst->free;
         lst->free = tmp;
+        --lst->size;
     }
+    List_OK (*lst)
+}
+
+void delete_before (List_t* lst, int pos) {
+    if (lst->prev[pos] == -1) {
+        printf ("Trying to delete element before non-existing element (it was not in list)\n");
+        lst->is_valid = calling_nowhere;
+    }
+    else {
+        int tmp = lst->prev[pos];               // - physical number of element to delete
+        lst->prev[pos] = lst->prev[tmp];
+        lst->next[lst->prev[tmp]] = pos;
+
+        lst->data[tmp] = 0;
+        lst->prev[tmp] = -1;
+
+        lst->next[tmp] = lst->free;
+        lst->free = tmp;
+        --lst->size;
+
+        lst->is_sorted = false;
+    }
+    List_OK (*lst)
+}
+
+void phys_match_log (List_t* lst) {
+    Elem_t* new_data = (Elem_t*) calloc (lst->max_size, sizeof (Elem_t));
+    Elem_t* new_next = (Elem_t*) calloc (lst->max_size, sizeof (Elem_t));
+    Elem_t* new_prev = (Elem_t*) calloc (lst->max_size, sizeof (Elem_t));
+
+    int i = 0;
+    for (i = 1; i <= lst->size; ++i) {
+        new_data[i] = lst->data[lst->head];
+        lst->head = lst->next[lst->head];
+    }
+
+    lst->head = 1;
+    lst->tail = lst->size;
+    lst->free = lst->size + 1;
+
+    lst->data = new_data;
+
+    for (int j = 1; j <= lst->size; ++j) {
+        lst->next[j] = j + 1;
+        lst->prev[j] = j - 1;
+    }
+    lst->next[i-1] = 0;
+
+    for (i; i < lst->max_size; ++i) {
+        lst->next[i] = i + 1;
+        lst->prev[i] = -1;
+    }
+    lst->next[lst->max_size-1] = 0;
+    lst->is_sorted = true;
+
     List_OK (*lst)
 }
 
