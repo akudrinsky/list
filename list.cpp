@@ -1,6 +1,6 @@
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 //!
-//! It is my implementation of stack
+//! It is my implementation of list
 //!
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 
@@ -11,23 +11,37 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define DEBUG
+#ifdef DEBUG
+#define ASSERT(cond)\
+    if (!(cond)) {\
+        printf ("Assert failure: < %s > in file %s, line %d, function %s\n", #cond, __FILE__, __LINE__, __PRETTY_FUNCTION__);\
+        abort();\
+}
+#else
+#define ASSERT(cond) ;
+#endif
+
 #define Lt_construct(lst) List_Construct(&lst, #lst);
 
+#define LIST_NEED_CHECKS
+#ifdef LIST_NEED_CHECKS
 #define List_OK(lst)                                   \
     List_okey (&lst);                                  \
-    Dump_f(&lst, __FILE__, __LINE__, __PRETTY_FUNCTION__);
+    Dump_f (&lst, __FILE__, __LINE__, __PRETTY_FUNCTION__);
+#else
+#define List_OK(lst) ;
+#endif
 
 typedef int Elem_t;
 
 enum lt_errors_c {
-    ok,
-    nulldata,
-    size_out_of_max,
-    canary_t,
-    canary_b,
-    bad_hash,
-    calling_nowhere,
-    destructed
+    ok              = 0,
+    nulldata        = 1,
+    size_out_of_max = 2,
+    no_memory       = 3,
+    calling_nowhere = 4,
+    destructed      = 5,
 };
 
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
@@ -40,9 +54,9 @@ enum lt_errors_c {
 //! @param [in] head - physical number of first (logically) element
 //! @param [in] tail - physical number of last (logically) element
 //! @param [in] free - first free element in list
-//! @param [in] size - number of elements in stack
+//! @param [in] size - number of elements in list
 //! @param [in] is_sorted - if list physical numbers correspond to logical ones
-//! @param [in] is_valid - if it is OK
+//! @param [in] status - if it is OK
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 
 #pragma pack(push, 1)
@@ -57,11 +71,11 @@ struct List_t {
     int size;
     int max_size;
     bool is_sorted;
-    lt_errors_c is_valid;
+    lt_errors_c status;
 };
 #pragma pack(pop)
 
-void List_Construct (List_t* lst, char* lst_name = "lst");
+void List_Construct (List_t* lst, char* lst_name = "lst", const int starting_size = 10);
 void Lt_destruct (List_t* lst);
 
 void Dump_f (List_t* lst, const char* file, int line,
@@ -71,12 +85,15 @@ void Dump_f (List_t* lst, const char* file, int line,
 void list_graph (List_t* lst, const char* pict_name = "list.png", const char* pict_type = "png");
 bool List_okey (List_t* lst);
 
-void insert_after (List_t* lst, int pos, Elem_t elem);
-void insert_before (List_t* lst, int pos, Elem_t elem);
-void delete_after (List_t* lst, int pos);
-void delete_before (List_t* lst, int pos);
+int insert_after (List_t* lst, int pos, Elem_t elem);
+int insert_before (List_t* lst, int pos, Elem_t elem);
+int delete_after (List_t* lst, int pos);
+int delete_before (List_t* lst, int pos);
 
+bool phys_match_log (List_t* lst);
+int val_in_list (List_t* lst, int value, bool need_log = false);
 
+void list_test ();
 
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 //! List construct
@@ -84,13 +101,19 @@ void delete_before (List_t* lst, int pos);
 //! @param [in] lst - pointer to list
 //! @param [in] lst_name - name of list (if you don't need it, it will be "lst" by default)
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-void List_Construct (List_t* lst, char* lst_name) {
-    const int starting_size = 10;
+void List_Construct (List_t* lst, char* lst_name, const int starting_size) {
+    ASSERT (lst != nullptr)
+    ASSERT (lst_name != nullptr)
 
     lst->name = lst_name;
     lst->data = (Elem_t *)calloc (starting_size, sizeof(Elem_t));
     lst->next = (Elem_t *)calloc (starting_size, sizeof(Elem_t));
     lst->prev = (Elem_t *)calloc (starting_size, sizeof(Elem_t));
+
+    if (lst->name == nullptr || lst->next == nullptr || lst->prev == nullptr || lst->data == nullptr) {
+        printf ("We have no memory left!\n");
+        exit (no_memory);
+    }
 
     for (int i = 1; i < starting_size; ++i) {
         lst->next[i] = i + 1;
@@ -104,54 +127,63 @@ void List_Construct (List_t* lst, char* lst_name) {
     lst->size = 0;
     lst->max_size = starting_size;
     lst->is_sorted = true;
-    lst->is_valid = ok;
+    lst->status = ok;
 
     List_OK (*lst);
 }
 
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-//! Stack desctruct
+//! List desctruct
 //!
-//! @param [in] lst - pointer to stack
-//! @param [in] lst_name - name of stack (if you don't need it, it will be "lst" by default)
-//! @return if everything is OK
+//! @param [in] lst - pointer to list
+//! @param [in] lst_name - name of list (if you don't need it, it will be "lst" by default)
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 void Lt_destruct (List_t* lst) {
+    ASSERT (lst != nullptr)
 
-    lst->name = nullptr;
-    free (lst->data);
-    free (lst->next);
-    free (lst->prev);
-    lst->head = 0;
-    lst->tail = 0;
-    lst->free = 0;
-    lst->size = 0;
-    lst->max_size = 0;
-    lst->is_sorted = true;
-    lst->is_valid = destructed;
+    if (lst->status == destructed) {
+        printf ("You are trying to destruct what had already been destructed!\n");
+        return;
+    }
+    else {
+        lst->name = nullptr;
+        free (lst->data);
+        free (lst->next);
+        free (lst->prev);
+        lst->head = 0;
+        lst->tail = 0;
+        lst->free = 0;
+        lst->size = 0;
+        lst->max_size = 0;
+        lst->is_sorted = true;
+        lst->status = destructed;
+    }
 }
 
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 //!
-//! @param [in] lst - pointer to stack
+//! @param [in] lst - pointer to list
 //! @param [in] file - file where this Dump_f was called
 //! @param [in] line - line in file where this Dump_f was called
 //! @param [in] func_name - name of function in file where this Dump_f was called
-//! @param [in] is_silent - if you need to stop the program if Stack is not ok
-//! @param [in] no_corr - if you need to print info about valid stacks or not
-//! @param [in] file_name - where to print info about stacks
+//! @param [in] is_silent - if you need to stop the program if list is not ok
+//! @param [in] no_corr - if you need to print info about valid list or not
+//! @param [in] file_name - where to print info about list
 //!
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 void Dump_f (List_t* lst, const char* file,
              int line, const char* func_name, char* info,
              bool is_silent, bool no_corr, const char* file_name) {
+    ASSERT (lst != nullptr)
+
     FILE* pFile = fopen (file_name, "ab");
+    ASSERT (pFile != nullptr)
 
     const char* status = "ok";
-    if (lst->is_valid != ok)                                                             //int or Elem_t????
+    if (lst->status != ok)
         status = "NOT OK";
 
-    if (!no_corr || lst->is_valid != 0) {
+    if (!no_corr || lst->status != 0) {
         fprintf (pFile, "%s from %s in line %d (file: %s)\n", info, func_name, line, file);
         fprintf (pFile, "List_t <%s> [%x] (%s)\n", lst->name, lst, status);
         fprintf (pFile, "{\n\tsize = %d\n\tdata[%d] = %x\n", lst->size, lst->max_size, lst->data);
@@ -166,7 +198,7 @@ void Dump_f (List_t* lst, const char* file,
         }
         fprintf(pFile, "\t}\n");
 
-        switch (lst->is_valid) {
+        switch (lst->status) {
             case ok:
                 break;
             case nulldata:
@@ -186,7 +218,7 @@ void Dump_f (List_t* lst, const char* file,
         fprintf (pFile, "}\n\n\n");
     }
 
-    if (!is_silent && lst->is_valid != 0) {
+    if (!is_silent && lst->status != 0) {
         printf ("Abort was made. For info look in list_dump.txt\n");
         abort ();
     }
@@ -194,11 +226,25 @@ void Dump_f (List_t* lst, const char* file,
     fclose (pFile);
 }
 
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+//! Makes picture of a list
+//!
+//! @param [in] lst - pointer to list
+//! @param [in] pict_name - name of picture (list.png by default)
+//! @param [in] pict_type - type of picture (png by default)
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 void list_graph (List_t* lst, const char* pict_name, const char* pict_type) {
-    FILE* pFile = fopen ("list_graph.dot", "w");
+    ASSERT (lst != nullptr)
+    ASSERT (pict_name != nullptr)
+    ASSERT (pict_type != nullptr)
 
-    fprintf (pFile, "digraph G{\nedge[color=\"chartreuse4\",fontcolor=\"blue\",fontsize=12];\nrankdir=LR;\nnode[shape=\"rectangle\",fontsize=15];\n");
-    fprintf (pFile, "%d[fillcolor=\"palegreen1\"];\n", lst->head);
+    FILE* pFile = fopen ("list_graph.dot", "w");
+    ASSERT (pFile != nullptr)
+
+    fprintf (pFile, "digraph G{\nedge[color=\"chartreuse4\",fontcolor=\"blue\",fontsize=12];\nnode[shape=\"rectangle\",fontsize=15];\n");
+    for (int i = 1; i < lst->max_size; ++i) {
+        fprintf (pFile, " %d [label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\"><tr><td bgcolor=\"lightblue\">%d</td></tr>\n\t<tr><td bgcolor=\"#f0e3ff\">%d</td></tr></table>>];\n", i, i, lst->data[i]);
+    }
 
     int pos = lst->head;
     while (lst->next[pos] != 0) {
@@ -219,12 +265,14 @@ void list_graph (List_t* lst, const char* pict_name, const char* pict_type) {
         fprintf (pFile, "%d->%d;\n", pos, lst->next[pos]);
         pos = lst->next[pos];
     }
+    fprintf (pFile, "info [shape=record,label=\"{green arrow - next|blue arrow - prev|brown arrow - free|blue cell - physical number|pink cell - data}\",fillcolor=\"palegreen1\"];\n");
 
     fprintf (pFile, "}");
     fclose (pFile);
 
     //executing command in terminal
-    char command[60] = "dot list_graph.dot -T ";
+    const int max_cmd_size = 50;
+    char command[max_cmd_size] = "dot list_graph.dot -T ";
     strcat (command, pict_type);
     strcat (command, " -o ");
     strcat (command, pict_name);
@@ -244,13 +292,13 @@ bool List_okey (List_t* lst) {
         return false;
     }
 
-    if (lst->data == nullptr) {
-        lst->is_valid = nulldata;
+    if (lst->data == nullptr || lst->next == nullptr || lst->prev == nullptr || lst->name == nullptr) {
+        lst->status = nulldata;
         return false;
     }
 
     if (lst->size > lst->max_size) {
-        lst->is_valid = size_out_of_max;
+        lst->status = size_out_of_max;
         return false;
     }
 
@@ -262,16 +310,29 @@ bool List_okey (List_t* lst) {
         return false;
     }
 
-    if (lst->is_valid != ok) {
+    if (lst->status != ok) {
         return false;
     }
+
     return true;
 }
 
-void insert_after (List_t* lst, int pos, Elem_t elem) {
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+//! Inserts element after a given position
+//!
+//! @param [in] lst - pointer to list
+//! @param [in] pos - physical number of element to insert elem after
+//! @param [in] elem - element to insert
+//! @return physical number of where element was written at
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+int insert_after (List_t* lst, int pos, Elem_t elem) {
+    ASSERT (lst != nullptr)
+
     if (lst->prev[pos] == -1) {
         printf ("Trying to insert element after non-existing element (it was not in list)\n");
-        lst->is_valid = calling_nowhere;
+        lst->status = calling_nowhere;
+        List_OK (*lst)
+        return 0;
     }
     else {
         int tmp = lst->next[lst->free];
@@ -291,20 +352,34 @@ void insert_after (List_t* lst, int pos, Elem_t elem) {
 
         lst->next[pos] = lst->free;
 
-        if (lst->head == 0) {
+        if (pos == 0) {
             lst->head = lst->free;
         }
 
         lst->free = tmp;
         ++lst->size;
+
+        List_OK (*lst)
+        return tmp;
     }
-    List_OK (*lst)
 }
 
-void insert_before (List_t* lst, int pos, Elem_t elem) {
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+//! Inserts element before a given position
+//!
+//! @param [in] lst - pointer to list
+//! @param [in] pos - physical number of element to insert elem before
+//! @param [in] elem - element to insert
+//! @return physical number of where element was written at
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+int insert_before (List_t* lst, int pos, Elem_t elem) {
+    ASSERT (lst != nullptr)
+
     if (lst->prev[pos] == -1) {
         printf ("Trying to insert element before non-existing element (it was not in list)\n");
-        lst->is_valid = calling_nowhere;
+        lst->status = calling_nowhere;
+        List_OK (*lst)
+        return 0;
     }
     else {
         int tmp = lst->next[lst->free];                             //next free element
@@ -313,9 +388,6 @@ void insert_before (List_t* lst, int pos, Elem_t elem) {
         //if inserting before first (logically) element
         if (pos == lst->head) {
             lst->head = lst->free;
-        }
-        else {
-            lst->is_sorted = false;
         }
 
         lst->next[lst->prev[pos]] = lst->free;
@@ -334,17 +406,33 @@ void insert_before (List_t* lst, int pos, Elem_t elem) {
         ++lst->size;
 
         lst->is_sorted = false;
+
+        List_OK (*lst)
+        return tmp;
     }
-    List_OK (*lst)
 }
 
-void delete_after (List_t* lst, int pos) {
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+//! Deletes element after a given position
+//!
+//! @param [in] lst - pointer to list
+//! @param [in] pos - physical number of element element to delete after
+//! @return physical number of deleted element
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+int delete_after (List_t* lst, int pos) {
+    ASSERT (lst != nullptr)
+
     if (lst->prev[pos] == -1) {
         printf ("Trying to delete element after non-existing element (it was not in list)\n");
-        lst->is_valid = calling_nowhere;
+        lst->status = calling_nowhere;
+        List_OK (*lst)
+        return 0;
     }
     else {
         int tmp = lst->next[pos];
+        if (tmp != lst->tail) {
+            lst->is_sorted = false;
+        }
         lst->next[pos] = lst->next[lst->next[pos]];
         lst->prev[lst->next[pos]] = pos;
 
@@ -354,14 +442,27 @@ void delete_after (List_t* lst, int pos) {
         lst->next[tmp] = lst->free;
         lst->free = tmp;
         --lst->size;
+
+        List_OK (*lst)
+        return tmp;
     }
-    List_OK (*lst)
 }
 
-void delete_before (List_t* lst, int pos) {
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+//! Deletes element before a given position
+//!
+//! @param [in] lst - pointer to list
+//! @param [in] pos - physical number of element element to delete before
+//! @return physical number of deleted element
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+int delete_before (List_t* lst, int pos) {
+    ASSERT (lst != nullptr)
+
     if (lst->prev[pos] == -1) {
         printf ("Trying to delete element before non-existing element (it was not in list)\n");
-        lst->is_valid = calling_nowhere;
+        lst->status = calling_nowhere;
+        List_OK (*lst)
+        return 0;
     }
     else {
         int tmp = lst->prev[pos];               // - physical number of element to delete
@@ -376,14 +477,27 @@ void delete_before (List_t* lst, int pos) {
         --lst->size;
 
         lst->is_sorted = false;
+
+        List_OK (*lst)
+        return tmp;
     }
-    List_OK (*lst)
 }
 
-void phys_match_log (List_t* lst) {
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+//! Makes physical numbers of elements match their logical ones (to fasten search)
+//!
+//! @param [in] lst - pointer to list
+//! @return if everything was okey
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+bool phys_match_log (List_t* lst) {
+    ASSERT (lst != nullptr)
+
     Elem_t* new_data = (Elem_t*) calloc (lst->max_size, sizeof (Elem_t));
-    Elem_t* new_next = (Elem_t*) calloc (lst->max_size, sizeof (Elem_t));
-    Elem_t* new_prev = (Elem_t*) calloc (lst->max_size, sizeof (Elem_t));
+
+    if (new_data == nullptr) {
+        printf ("We have no memory for new_data!\n");
+        return false;
+    }
 
     int i = 0;
     for (i = 1; i <= lst->size; ++i) {
@@ -395,6 +509,7 @@ void phys_match_log (List_t* lst) {
     lst->tail = lst->size;
     lst->free = lst->size + 1;
 
+    free (lst->data);
     lst->data = new_data;
 
     for (int j = 1; j <= lst->size; ++j) {
@@ -411,6 +526,180 @@ void phys_match_log (List_t* lst) {
     lst->is_sorted = true;
 
     List_OK (*lst)
+    return true;
+}
+
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+//! Searches for value in a list
+//!
+//! @param [in] lst - pointer to list
+//! @param [in] value - value to search for
+//! @param [in] need_log - if we need logical number or physical one
+//! @return position of element with such value (0 if was not found)
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+int val_in_list (List_t* lst, int value, bool need_log) {
+    ASSERT (lst != nullptr)
+
+    int pos = lst->head;
+    int log_number = 1;
+
+    while (pos != lst->tail) {
+        //printf ("pos: %d\n", pos);
+        if (lst->data[pos] == value) {
+            if (need_log) {
+                return log_number;
+            }
+            else {
+                return pos;
+            }
+        }
+        pos = lst->next[pos];
+        ++log_number;
+    }
+
+    if (lst->data[pos] == value) {          //in case the value is the last one
+        if (need_log) {
+            return log_number;
+        }
+        else {
+            return pos;
+        }
+    }
+
+    return 0;
+}
+
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+//!
+//! BIG test for list
+//!
+//‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+void list_test () {
+    List_t lst = {};
+    Lt_construct (lst)
+
+    insert_after (&lst, 0, 1);
+    insert_after (&lst, 0, 2);
+    insert_before (&lst, 2, 3);
+
+    delete_before (&lst, 2);
+
+    insert_after (&lst, 0, 4);
+    insert_after (&lst, 3, 5);
+
+    if (lst.size != 4) {
+        printf ("list_text_1 is not ok (1)\n");
+    }
+    if (lst.max_size != 10) {
+        printf ("list_text_1 is not ok (2)\n");
+    }
+    if (lst.head != 3) {
+        printf ("list_text_1 is not ok (3)\n");
+    }
+    if (lst.tail != 1) {
+        printf ("list_text_1 is not ok (4)\n");
+    }
+    if (lst.data[2] != 2) {
+        printf ("list_text_1 is not ok (5)\n");
+    }
+    if (lst.free != 5) {
+        printf ("list_text_1 is not ok (6)\n");
+    }
+
+    phys_match_log (&lst);
+
+    if (lst.free != 5) {
+        printf ("list_text_1 is not ok (7)\n");
+    }
+    if (lst.max_size != 10) {
+        printf ("list_text_1 is not ok (8)\n");
+    }
+    if (lst.head != 1) {
+        printf ("list_text_1 is not ok (9)\n");
+    }
+    if (lst.size != 4) {
+        printf ("list_text_1 is not ok (10)\n");
+    }
+    if (lst.data[2] != 5) {
+        printf ("list_text_1 is not ok (11)\n");
+    }
+    if (lst.tail != 4) {
+        printf ("list_text_1 is not ok (12)\n");
+    }
+
+    Lt_destruct (&lst);
+
+    Lt_construct ( lst);
+
+    for (int i = 1; i < 6; ++i) {
+        insert_after (&lst, i - 1, i);
+    }
+
+    if (lst.free != 6) {
+        printf ("list_text_1 is not ok (13)\n");
+    }
+    if (lst.max_size != 10) {
+        printf ("list_text_1 is not ok (14)\n");
+    }
+    if (lst.head != 1) {
+        printf ("list_text_1 is not ok (15)\n");
+    }
+    if (lst.size != 5) {
+        printf ("list_text_1 is not ok (16)\n");
+    }
+    if (lst.tail != 5) {
+        printf ("list_text_1 is not ok (17)\n");
+    }
+
+    for (int i = 1; i < 6; ++i) {
+        if (lst.data[i] != i) {
+            printf ("list_text_1 is not ok (18)\n");
+        }
+        if (lst.next[i-1] != i) {
+            printf ("list_text_1 is not ok (19)\n");
+        }
+        if (lst.prev[i] != i - 1) {
+            printf ("list_text_1 is not ok (20)\n");
+        }
+    }
+
+    for (int i = 6; i < 9; ++i) {
+        if (lst.data[i] != 0) {
+            printf ("list_text_1 is not ok (21)\n");
+        }
+        if (lst.next[i] != i + 1) {
+            printf ("list_text_1 is not ok (22)\n");
+        }
+        if (lst.prev[i] != -1) {
+            printf ("list_text_1 is not ok (23)\n");
+        }
+    }
+
+    bool need_log = true;
+    if (val_in_list (&lst, 2, need_log) != 2) {
+        printf ("list_text_1 is not ok (24)\n");
+    }
+
+    insert_before (&lst, lst.tail, 10);
+    if (val_in_list (&lst, 10, !need_log) != 6) {
+        printf ("list_text_1 is not ok (25)\n");
+    }
+
+    delete_after (&lst, 3);
+
+    list_graph (&lst);
+
+    if (lst.next[4] != 7) {
+        printf ("list_text_1 is not ok (26)\n");
+    }
+    if (lst.prev[4] != -1) {
+        printf ("list_text_1 is not ok (26)\n");
+    }
+    if (lst.prev[6] != 3) {
+        printf ("list_text_1 is not ok (27)\n");
+    }
+
+    Lt_destruct (&lst);
 }
 
 #endif

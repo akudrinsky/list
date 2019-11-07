@@ -1,17 +1,36 @@
 digraph G{
 edge[color="chartreuse4",fontcolor="blue",fontsize=12];
-rankdir=LR;
 node[shape="rectangle",fontsize=15];
-1[fillcolor="palegreen1"];
+ 1 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">1</td></tr>
+	<tr><td bgcolor="#f0e3ff">1</td></tr></table>>];
+ 2 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">2</td></tr>
+	<tr><td bgcolor="#f0e3ff">2</td></tr></table>>];
+ 3 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">3</td></tr>
+	<tr><td bgcolor="#f0e3ff">3</td></tr></table>>];
+ 4 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">4</td></tr>
+	<tr><td bgcolor="#f0e3ff">0</td></tr></table>>];
+ 5 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">5</td></tr>
+	<tr><td bgcolor="#f0e3ff">5</td></tr></table>>];
+ 6 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">6</td></tr>
+	<tr><td bgcolor="#f0e3ff">10</td></tr></table>>];
+ 7 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">7</td></tr>
+	<tr><td bgcolor="#f0e3ff">0</td></tr></table>>];
+ 8 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">8</td></tr>
+	<tr><td bgcolor="#f0e3ff">0</td></tr></table>>];
+ 9 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">9</td></tr>
+	<tr><td bgcolor="#f0e3ff">0</td></tr></table>>];
 1->2;
 2->3;
+3->6;
+6->5;
 edge[color="cyan3",fontcolor="blue",fontsize=12];
+5->6;
+6->3;
 3->2;
 2->1;
 edge[color="palevioletred4",fontcolor="blue",fontsize=12];
-4->5;
-5->6;
-6->7;
+4->7;
 7->8;
 8->9;
+info [shape=record,label="{green arrow - next|blue arrow - prev|brown arrow - free|blue cell - physical number|pink cell - data}",fillcolor="palegreen1"];
 }

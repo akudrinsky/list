@@ -6,6 +6,18 @@
 
 #IncludeRegexTransform: 
 
+/Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/hashtable.cpp
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+list.cpp
+/Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp
+math.h
+-
+
 /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp
 stdio.h
 -
@@ -19,4 +31,6 @@ stdio.h
 -
 list.cpp
 /Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/list.cpp
+hashtable.cpp
+/Users/alexeykudrinsky/Documents/MIPT/1 course/Introduction to data structures/list/hashtable.cpp
 
