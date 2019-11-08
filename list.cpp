@@ -42,6 +42,7 @@ enum lt_errors_c {
     no_memory       = 3,
     calling_nowhere = 4,
     destructed      = 5,
+    strange_value   = 6,
 };
 
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
@@ -61,7 +62,7 @@ enum lt_errors_c {
 
 #pragma pack(push, 1)
 struct List_t {
-    char* name;
+    const char* name;
     Elem_t* data;
     Elem_t* next;
     Elem_t* prev;
@@ -75,23 +76,23 @@ struct List_t {
 };
 #pragma pack(pop)
 
-void List_Construct (List_t* lst, char* lst_name = "lst", const int starting_size = 10);
+void List_Construct (List_t* lst, const char* lst_name = "lst", const int starting_size = 10);
 void Lt_destruct (List_t* lst);
 
-void Dump_f (List_t* lst, const char* file, int line,
+void Dump_f (const List_t* lst, const char* file, int line,
              const char* func_name, char* info = "assert",
              bool is_silent = false, bool no_corr = false,
              const char* file_name = "list_dump.txt");
 void list_graph (List_t* lst, const char* pict_name = "list.png", const char* pict_type = "png");
 bool List_okey (List_t* lst);
 
-int insert_after (List_t* lst, int pos, Elem_t elem);
-int insert_before (List_t* lst, int pos, Elem_t elem);
-int delete_after (List_t* lst, int pos);
-int delete_before (List_t* lst, int pos);
+int insert_after (List_t* lst, const int pos, const Elem_t elem);
+int insert_before (List_t* lst, const int pos, const Elem_t elem);
+int delete_after (List_t* lst, const int pos);
+int delete_before (List_t* lst, const int pos);
 
 bool phys_match_log (List_t* lst);
-int val_in_list (List_t* lst, int value, bool need_log = false);
+int val_in_list (List_t* lst, const int value, const bool need_log = false);
 
 void list_test ();
 
@@ -101,7 +102,7 @@ void list_test ();
 //! @param [in] lst - pointer to list
 //! @param [in] lst_name - name of list (if you don't need it, it will be "lst" by default)
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-void List_Construct (List_t* lst, char* lst_name, const int starting_size) {
+void List_Construct (List_t* lst, const char* lst_name, const int starting_size) {
     ASSERT (lst != nullptr)
     ASSERT (lst_name != nullptr)
 
@@ -171,7 +172,7 @@ void Lt_destruct (List_t* lst) {
 //! @param [in] file_name - where to print info about list
 //!
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-void Dump_f (List_t* lst, const char* file,
+void Dump_f (const List_t* lst, const char* file,
              int line, const char* func_name, char* info,
              bool is_silent, bool no_corr, const char* file_name) {
     ASSERT (lst != nullptr)
@@ -243,7 +244,7 @@ void list_graph (List_t* lst, const char* pict_name, const char* pict_type) {
 
     fprintf (pFile, "digraph G{\nedge[color=\"chartreuse4\",fontcolor=\"blue\",fontsize=12];\nnode[shape=\"rectangle\",fontsize=15];\n");
     for (int i = 1; i < lst->max_size; ++i) {
-        fprintf (pFile, " %d [label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\"><tr><td bgcolor=\"lightblue\">%d</td></tr>\n\t<tr><td bgcolor=\"#f0e3ff\">%d</td></tr></table>>];\n", i, i, lst->data[i]);
+        fprintf (pFile, " %d [color=\"white\",label=<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\"><tr><td bgcolor=\"lightblue\">%d</td></tr>\n\t<tr><td bgcolor=\"#f0e3ff\">%d</td></tr></table>>];\n", i, i, lst->data[i]);
     }
 
     int pos = lst->head;
@@ -303,10 +304,12 @@ bool List_okey (List_t* lst) {
     }
 
     if (lst->max_size < 10) {
+        lst->status = strange_value;
         return false;
     }
 
     if (lst->size < 0) {
+        lst->status = strange_value;
         return false;
     }
 
@@ -325,7 +328,7 @@ bool List_okey (List_t* lst) {
 //! @param [in] elem - element to insert
 //! @return physical number of where element was written at
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-int insert_after (List_t* lst, int pos, Elem_t elem) {
+int insert_after (List_t* lst, const int pos, const Elem_t elem) {
     ASSERT (lst != nullptr)
 
     if (lst->prev[pos] == -1) {
@@ -372,7 +375,7 @@ int insert_after (List_t* lst, int pos, Elem_t elem) {
 //! @param [in] elem - element to insert
 //! @return physical number of where element was written at
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-int insert_before (List_t* lst, int pos, Elem_t elem) {
+int insert_before (List_t* lst, const int pos, const Elem_t elem) {
     ASSERT (lst != nullptr)
 
     if (lst->prev[pos] == -1) {
@@ -419,7 +422,7 @@ int insert_before (List_t* lst, int pos, Elem_t elem) {
 //! @param [in] pos - physical number of element element to delete after
 //! @return physical number of deleted element
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-int delete_after (List_t* lst, int pos) {
+int delete_after (List_t* lst, const int pos) {
     ASSERT (lst != nullptr)
 
     if (lst->prev[pos] == -1) {
@@ -455,7 +458,7 @@ int delete_after (List_t* lst, int pos) {
 //! @param [in] pos - physical number of element element to delete before
 //! @return physical number of deleted element
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-int delete_before (List_t* lst, int pos) {
+int delete_before (List_t* lst, const int pos) {
     ASSERT (lst != nullptr)
 
     if (lst->prev[pos] == -1) {
@@ -537,7 +540,7 @@ bool phys_match_log (List_t* lst) {
 //! @param [in] need_log - if we need logical number or physical one
 //! @return position of element with such value (0 if was not found)
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-int val_in_list (List_t* lst, int value, bool need_log) {
+int val_in_list (List_t* lst, const int value, const bool need_log) {
     ASSERT (lst != nullptr)
 
     int pos = lst->head;

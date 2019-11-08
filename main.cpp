@@ -5,7 +5,7 @@
 int main() {
 
     list_test ();
-    //hast_test_1 ();
+    hast_test_1 ();
 
     return 0;
 }

@@ -40,10 +40,10 @@ struct hashtable {
 };
 #pragma pack(pop)
 
-void hast_construct (hashtable* hast, int hast_maxsize = 30);
-void hast_destruct (hashtable* hast, int hast_maxsize = 30);
+void hast_construct (hashtable* hast, const int hast_maxsize = 30);
+void hast_destruct (hashtable* hast, const int hast_maxsize = 30);
 
-int hash_it (void* stk, int number, int seed);
+int hash_it (void* stk, const int number, const int seed);
 
 void add_element (hashtable* hast, char* str, Elem_t value);
 Elem_t* search_by_str (hashtable* hast, char* str, int* size);
@@ -51,12 +51,9 @@ void delete_element (hashtable* hast, char* str);
 
 bool hast_ok (hashtable* hast);
 
-void hast_graph (hashtable* hast, const char* pict_name = "hast.png", const char* pict_type = "png");
+//void hast_graph (hashtable* hast, const char* pict_name = "hast.png", const char* pict_type = "png");
 
 void hast_test_1 ();
-void hast_test_2 ();
-void hast_test_3 ();
-void hast_test_4 ();
 
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
 //! Hash-table construct
@@ -64,7 +61,7 @@ void hast_test_4 ();
 //! @param [in] hast - pointer to hash-table
 //! @param [in] hast_maxsize - max elements which it can theoretically store without intersections
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-void hast_construct (hashtable* hast, int hast_maxsize) {
+void hast_construct (hashtable* hast, const int hast_maxsize) {
     ASSERT (hast != nullptr)
 
     hast->rows = (List_t*)calloc (hast_maxsize, sizeof (List_t));
@@ -92,7 +89,7 @@ void hast_construct (hashtable* hast, int hast_maxsize) {
 //! @param [in] hast - pointer to hash-table
 //! @param [in] hast_maxsize - max elements which it can theoretically store without intersections
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-void hast_destruct (hashtable* hast, int hast_maxsize) {
+void hast_destruct (hashtable* hast, const int hast_maxsize) {
     ASSERT (hast != nullptr)
 
     if (hast->status == destructed) {
@@ -115,7 +112,7 @@ void hast_destruct (hashtable* hast, int hast_maxsize) {
 //! @param [in] seed - to make different results
 //! @return hash of structure
 //‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
-int hash_it (void* stk, int number, int seed) {
+int hash_it (void* stk, const int number, const int seed) {
     void* ptr = stk;
     int hash = seed;
 
@@ -186,6 +183,7 @@ void delete_element (hashtable* hast, char* str) {
 
     int starting_size = 10;
     for (int i = 1; i < starting_size; ++i) {
+        lst->data[i] = 0;
         lst->next[i] = i + 1;
         lst->prev[i] = -1;
     }
@@ -301,10 +299,19 @@ void hast_test_1 () {
     int size = 0;
     Elem_t* elements = search_by_str (&hast, "abcd", &size);
 
-    for (int i = 0; i < size; ++i)
-        printf ("%d\n", elements[i]);
+    if (elements[0] != 133) {
+        printf ("hast_text_1 is not ok (1): %d\n", elements[0]);
+    }
+    if (elements[1] != 233) {
+        printf ("hast_text_1 is not ok (2): %d\n", elements[1]);
+    }
 
     delete_element (&hast, "abcd");
+
+    elements = search_by_str (&hast, "abcd", &size);
+    if (size != 0) {
+        printf ("hast_text_1 is not ok (3): %d\n", size);
+    }
 
     add_element (&hast, "abcd", 131);
     add_element (&hast, "abcd", 2331);
@@ -312,8 +319,12 @@ void hast_test_1 () {
 
     elements = search_by_str (&hast, "abcd", &size);
 
-    for (int i = 0; i < size; ++i)
-        printf ("%d\n", elements[i]);
+    if (elements[0] != 131) {
+        printf ("hast_text_1 is not ok (4): %d\n", elements[2]);
+    }
+    if (elements[1] != 2331) {
+        printf ("hast_text_1 is not ok (5): %d\n", elements[3]);
+    }
 
     hast_destruct (&hast);
 }

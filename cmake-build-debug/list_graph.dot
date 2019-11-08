@@ -1,23 +1,23 @@
 digraph G{
 edge[color="chartreuse4",fontcolor="blue",fontsize=12];
 node[shape="rectangle",fontsize=15];
- 1 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">1</td></tr>
+ 1 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">1</td></tr>
 	<tr><td bgcolor="#f0e3ff">1</td></tr></table>>];
- 2 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">2</td></tr>
+ 2 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">2</td></tr>
 	<tr><td bgcolor="#f0e3ff">2</td></tr></table>>];
- 3 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">3</td></tr>
+ 3 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">3</td></tr>
 	<tr><td bgcolor="#f0e3ff">3</td></tr></table>>];
- 4 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">4</td></tr>
+ 4 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">4</td></tr>
 	<tr><td bgcolor="#f0e3ff">0</td></tr></table>>];
- 5 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">5</td></tr>
+ 5 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">5</td></tr>
 	<tr><td bgcolor="#f0e3ff">5</td></tr></table>>];
- 6 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">6</td></tr>
+ 6 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">6</td></tr>
 	<tr><td bgcolor="#f0e3ff">10</td></tr></table>>];
- 7 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">7</td></tr>
+ 7 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">7</td></tr>
 	<tr><td bgcolor="#f0e3ff">0</td></tr></table>>];
- 8 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">8</td></tr>
+ 8 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">8</td></tr>
 	<tr><td bgcolor="#f0e3ff">0</td></tr></table>>];
- 9 [label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">9</td></tr>
+ 9 [color="white",label=<<table border="0" cellborder="1" cellspacing="0"><tr><td bgcolor="lightblue">9</td></tr>
 	<tr><td bgcolor="#f0e3ff">0</td></tr></table>>];
 1->2;
 2->3;
